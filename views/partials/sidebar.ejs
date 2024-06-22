@@ -1,3 +1,43 @@
 <div class="sidebar">
-    <button class="close-sidebar"><i class="fa-regular fa-circle-xmark closeSidebarIcon"></i></button>
+  <button class="close-sidebar">
+    <i class="fa-regular fa-circle-xmark closeSidebarIcon"></i>
+  </button>
+
+  <form class="roboto-regular" action="/filters" method="post">
+    <!-- Category Section -->
+    <label for="category">Category:</label><br />
+    <label for="any">Any</label>
+    <input type="radio" name="category" id="any" value="Any" checked /><br />
+    <label for="misc">Misc</label>
+    <input type="radio" name="category" id="misc" value="Misc" /><br>
+    <label for="programming">Programming</label>
+    <input type="radio" name="category" id="programming" value="Programming" /><br>
+    <label for="dark">Dark</label>
+    <input type="radio" name="category" id="dark" value="Dark" /><br>
+    <label for="pun">Pun</label>
+    <input type="radio" name="category" id="pun" value="Pun" /><br>
+    <label for="spooky">Spooky</label>
+    <input type="radio" name="category" id="spooky" value="Spooky" /><br>
+    <label for="christmas">Christmas</label>
+    <input type="radio" name="category" id="christmas" value="Christmas" /><br><br>
+
+    <!-- Blacklist Section -->
+    <label for="blacklist">Blacklist:</label><br />
+    <label for="nsfw">NSFW</label>
+    <input type="checkbox" name="blacklist" id="nsfw" value="nsfw" /><br />
+    <label for="religious">Religious</label>
+    <input type="checkbox" name="blacklist" id="religious" value="religious" /><br />
+    <label for="political">Political</label>
+    <input type="checkbox" name="blacklist" id="political" value="political" /><br />
+    <label for="racist">Racist</label>
+    <input type="checkbox" name="blacklist" id="racist" value="racist" /><br />
+    <label for="sexist">Sexist</label>
+    <input type="checkbox" name="blacklist" id="sexist" value="sexist" /><br />
+    <label for="explicit">Explicit</label>
+    <input type="checkbox" name="blacklist" id="explicit" value="explicit" /><br />
+
+    <!-- Submit Button -->
+    <input type="submit" value="Save">
+</form>
+
 </div>

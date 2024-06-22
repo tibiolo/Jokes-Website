@@ -25,16 +25,10 @@ const API_URL = "https://v2.jokeapi.dev/joke";
 app.get("/", async (req, res) => {
     const result = await axios.get(API_URL + "/Any", { params: { type: "twopart" }});
     res.render(__dirname + "/views/index.ejs", {
-        jokeTitle: JSON.stringify(result.data.setup),
-        joke: JSON.stringify(result.data.delivery)
+        jokeTitle: result.data.setup,
+        joke: result.data.delivery
     });
 })
-
-
-
-
-
-
 
 
 
