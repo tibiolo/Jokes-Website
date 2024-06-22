@@ -8,10 +8,12 @@
     font-style: normal;
   }
 
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body {
@@ -47,25 +49,30 @@ i {
 .sidebar {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
     height: 100vh;
     background-color: rgb(255, 217, 0);
-    display: none;
+    transition: left 0.3s ease;
 }
 
-.closeSidebar {
+.sidebar.active {
+    left: 0;
+}
+
+.close-sidebar {
     background: none;
     border: 0;
     padding: 1rem;
     font-size: xx-large;
+    cursor: pointer;
 }
 
 /*  */
 
 .display-container {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
