@@ -1,4 +1,17 @@
-<%- include('partials/header.ejs') %>
-<h3> <%= jokeTitle %> </h3>
-<p> <%= joke %></p>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Jokes</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+
+    <h3><%= jokeTitle %></h3>
+    <p><%= joke %></p>
+
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>
