@@ -3,14 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
     <link rel="stylesheet" href="styles/style.css" />
     <title>Jokes</title>
   </head>
   <body>
     <%- include('partials/header.ejs') %>
 
-    <h3><%= jokeTitle %></h3>
-    <p><%= joke %></p>
+    <section class="display-container">
+      <div class="joke-container roboto-regular">
+        <h2><%= jokeTitle %></h2>
+        <p><%= joke %></p>
+      </div>
+    </section>
 
     <%- include('partials/footer.ejs') %>
   </body>
