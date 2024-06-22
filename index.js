@@ -5,6 +5,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+
 // Setting App and PORT
 const app = express();
 const PORT = 3000;
@@ -15,15 +16,14 @@ app.use(BodyParser.urlencoded({ extended: true }));
 
 
 // Setting Public Directory
-app.use(express.static(__dirname + "public"));
+app.use(express.static("public"));
 
 // Jokes API
-const API_URL = "https://v2.jokeapi.dev/joke"
+const API_URL = "https://v2.jokeapi.dev/joke";
 
 // Homepage Route
 app.get("/", async (req, res) => {
     const result = await axios.get(API_URL + "/Any", { params: { type: "twopart" }});
-    console.log(JSON.stringify(result.data))
     res.render(__dirname + "/views/index.ejs", {
         jokeTitle: JSON.stringify(result.data.setup),
         joke: JSON.stringify(result.data.delivery)
@@ -31,7 +31,7 @@ app.get("/", async (req, res) => {
 })
 
 
-    
+
 
 
 
