@@ -3,7 +3,7 @@
     <i class="fa-regular fa-circle-xmark closeSidebarIcon"></i>
   </button>
 
-  <form class="roboto-regular" action="/filters" method="post">
+  <form id="filtersForm" class="roboto-regular">
     <!-- Category Section -->
     <label for="category">Category:</label><br />
     <label for="any">Any</label>
@@ -20,7 +20,7 @@
     <input type="radio" name="category" id="spooky" value="Spooky" /><br>
     <label for="christmas">Christmas</label>
     <input type="radio" name="category" id="christmas" value="Christmas" /><br><br>
-
+    
     <!-- Blacklist Section -->
     <label for="blacklist">Blacklist:</label><br />
     <label for="nsfw">NSFW</label>

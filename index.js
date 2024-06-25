@@ -12,7 +12,7 @@ const PORT = 3000;
 
 
 // Using BodyParser
-app.use(BodyParser.urlencoded({ extended: true }));
+app.use(BodyParser.json());
 
 
 // Setting Public Directory
@@ -33,8 +33,8 @@ app.get("/", async (req, res) => {
 // Filters Route
 app.post("/filters", async (req, res) => {
     let filters = req.body;
-    console.log(`${filters.blacklist.join()}`)
-    const result = await axios.get(API_URL + `/${filters.category}`, { params: { type: "twopart", blacklistFlags: `${filters.blacklist.join()}`}});
+    console.log("Received Filters", filters)
+    const result = await axios.get(API_URL + `/${filters.category}`, { params: { type: "twopart", blacklistFlags: `${filters.blacklist}`}});
     res.render(__dirname + "/views/index.ejs", {
         jokeTitle: result.data.setup,
         joke: result.data.delivery
