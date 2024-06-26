@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Setting App and PORT
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 // Using BodyParser
@@ -23,22 +23,32 @@ const API_URL = "https://v2.jokeapi.dev/joke";
 
 // Homepage Route
 app.get("/", async (req, res) => {
-    const result = await axios.get(API_URL + "/Any", { params: { type: "twopart" }});
-    res.render(__dirname + "/views/index.ejs", {
-        jokeTitle: result.data.setup,
-        joke: result.data.delivery
-    });
+    try {
+        const result = await axios.get(API_URL + "/Any", { params: { type: "twopart" }});
+        res.render(__dirname + "/views/index.ejs", {
+            jokeTitle: result.data.setup,
+            joke: result.data.delivery
+        });
+    } catch (error) {
+        console.error("Error while loading jokes", error.message);
+        res.status(500).send("An error occurred while loading jokes. Please try again later.");
+    }
 })
 
 // Filters Route
 app.post("/next-joke", async (req, res) => {
     let filters = req.body;
     console.log("Received Filters", filters)
-    const result = await axios.get(API_URL + `/${filters.category}`, { params: { type: "twopart", blacklistFlags: `${filters.blacklist}`}});
-    res.json({
-        jokeTitle: result.data.setup,
-        joke: result.data.delivery
-    })
+    try {
+        const result = await axios.get(API_URL + `/${filters.category}`, { params: { type: "twopart", blacklistFlags: `${filters.blacklist}`}});
+        res.json({
+            jokeTitle: result.data.setup,
+            joke: result.data.delivery
+        })
+    } catch (error) {
+        console.error("Error while requesting next joke", error.message);
+        res.status(500).json({ error: "An error occurred while requesting the next joke. Please try again later." });
+    } 
 })
 
 
