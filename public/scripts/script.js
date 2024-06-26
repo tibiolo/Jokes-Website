@@ -9,7 +9,9 @@ $(document).ready(() => {
     $(".sidebar").removeClass("active");
   });
 
-
+  $("#submit-btn").click(() => {
+    $(".sidebar").removeClass("active");
+  })
 
 // initializes the default filters variable as an object 
 let filters = {
