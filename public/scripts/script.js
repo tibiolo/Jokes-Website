@@ -1,4 +1,6 @@
 $(document).ready(() => {
+
+  // Close and open sidebar
   $(".filters-btn").click(() => {
     $(".sidebar").addClass("active");
   });
@@ -8,15 +10,15 @@ $(document).ready(() => {
   });
 
 
-//   Retrieves data from the filters form
 
-// Stores the filters as an object
+// initializes the default filters variable as an object 
 let filters = {
     category: "Any",
     blacklist: [],
   };
 
 
+  // Retrieves data from the filters form
   $("#filtersForm").on("submit", function (event) {
     event.preventDefault();
 
@@ -29,6 +31,11 @@ let filters = {
       selectedBlacklist.push($(this).val());
     });
 
+    if (selectedBlacklist.length > 1) {
+      selectedBlacklist = selectedBlacklist.join(',');
+      console.log(selectedBlacklist);
+    } 
+
     filters = {
         category: selectedCategory,
         blacklist: selectedBlacklist,
@@ -38,14 +45,17 @@ let filters = {
   });
 
 
+  // Sends the next joke request to the server 
   $(".next-btn").click(() => {
     $.ajax({
         type: "POST",
-        url: "/filters",
+        url: "/next-joke",
         data: JSON.stringify(filters),
         contentType: "application/json",
         success: function (response) {
             console.log("Server response:", response);
+            $('#jokeTitle').text(response.jokeTitle)
+            $('#joke').text(response.joke)
         },
         error: function (xhr, status, error) {
             console.error("Error:", status, error);
