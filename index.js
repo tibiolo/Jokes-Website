@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Setting App and PORT
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 
 // Using BodyParser
